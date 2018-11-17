@@ -83,8 +83,8 @@ const Adagrams = {
   return output;
   },
 
-  score_word() {
-    const wordScore = 0
+  scoreWord(word) {
+    let wordScore = 0;
     const letterScores = {
       1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
       2: ["D", "G"],
@@ -95,11 +95,21 @@ const Adagrams = {
       10: ["Q", "Z"]
     };
 
+    const wordArray = word.toUpperCase().split('');
 
+    wordArray.forEach(function (letter) {
+      for (let score in letterScores) {
+        if (letterScores[score].includes(letter)){
+          wordScore += parseInt(score);
+        }
+      }
+    });
 
+    if (wordArray.length >= 7) {
+      wordScore += 8;
+    }
 
-
-
+    return wordScore;
   },
 
 };

@@ -1,7 +1,7 @@
 import Adagrams from 'adagrams';
 
 describe('Adagrams', () => {
-  describe('drawLetters', () => {
+  describe.skip('drawLetters', () => {
     it('draws ten letters from the letter pool', () => {
       const drawn = Adagrams.drawLetters();
 
@@ -18,7 +18,7 @@ describe('Adagrams', () => {
     });
   });
 
-  describe('usesAvailableLetters', () => {
+  describe.skip('usesAvailableLetters', () => {
     it('returns true if the submitted letters are valid against the drawn letters', () => {
       const drawn = ['D', 'O', 'G', 'X', 'X', 'X', 'X', 'X', 'X', 'X'];
       const word = 'DOG';
@@ -45,7 +45,7 @@ describe('Adagrams', () => {
     });
   });
 
-  describe.skip('scoreWord', () => {
+  describe('scoreWord', () => {
     const expectScores = (wordScores) => {
       Object.entries(wordScores).forEach(([word, score]) => {
         expect(Adagrams.scoreWord(word)).toBe(score);
