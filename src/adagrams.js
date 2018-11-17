@@ -1,6 +1,6 @@
 const Adagrams = {
   drawLetters() {
-    const letter_pool = [
+    const letterPool = [
       "A", "A", "A", "A", "A", "A", "A", "A", "A",
       "B", "B",
       "C", "C",
@@ -29,50 +29,50 @@ const Adagrams = {
       "Z"
     ];
 
-    const player_hand = [];
+    const playerHand = [];
 
     for ( let i = 0; i < 10; i += 1) {
-      const random_index = Math.floor(Math.random() * letter_pool.length);
+      const randomIndex = Math.floor(Math.random() * letterPool.length);
 
-      const random_letter = letter_pool[random_index];
+      const randomLetter = letterPool[randomIndex];
 
-      const add_to_hand = () => {
-        return player_hand.push(random_letter)
+      const addToHand = () => {
+        return playerHand.push(randomLetter)
       };
 
-      const remove_letter = () => {
-        return letter_pool.splice(random_index, 1)
+      const removeLetter = () => {
+        return letterPool.splice(randomIndex, 1)
       };
 
-      add_to_hand();
-      remove_letter();
+      addToHand();
+      removeLetter();
     }
 
-    return player_hand;
+    return playerHand;
   },
 
   usesAvailableLetters(word, drawn) {
-    const word_array = word.toUpperCase().split('');
-    const letter_hash_obj = new Object();
+    const wordArray = word.toUpperCase().split('');
+    const letterHashObj = new Object();
     let output = true
 
     drawn.forEach(function (letter) {
-      if (letter_hash_obj[letter]) {
-        letter_hash_obj[letter] += 1;
+      if (letterHashObj[letter]) {
+        letterHashObj[letter] += 1;
       }
       else {
-        letter_hash_obj[letter] = 1;
+        letterHashObj[letter] = 1;
       }
     });
 
 
-    word_array.forEach(function (letter) {
-      if (letter_hash_obj[letter]) {
-        if (letter_hash_obj[letter] < 1 ) {
+    wordArray.forEach(function (letter) {
+      if (letterHashObj[letter]) {
+        if (letterHashObj[letter] < 1 ) {
           output = false;
         }
         else {
-          letter_hash_obj[letter] -= 1;
+          letterHashObj[letter] -= 1;
         }
       }
       else {
@@ -83,6 +83,24 @@ const Adagrams = {
   return output;
   },
 
+  score_word() {
+    const wordScore = 0
+    const letterScores = {
+      1: ["A", "E", "I", "O", "U", "L", "N", "R", "S", "T"],
+      2: ["D", "G"],
+      3: ["B", "C", "M", "P"],
+      4: ["F", "H", "V", "W", "Y"],
+      5: ["K"],
+      8: ["J", "X"],
+      10: ["Q", "Z"]
+    };
+
+
+
+
+
+
+  },
 
 };
 
