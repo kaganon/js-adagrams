@@ -112,6 +112,34 @@ const Adagrams = {
     return wordScore;
   },
 
+  highestScoreFrom(words) {
+    let highestPointsWord = null;
+    let score = 0;
+
+    words.forEach( (word) => {
+      const scoreOfWord = this.scoreWord(word);
+      if (scoreOfWord > score) {
+        highestPointsWord = word;
+        score = scoreOfWord
+      }
+      else if (scoreOfWord === score) {
+        if (word.length === 10 && word.length !== highestPointsWord.length) {
+          highestPointsWord = word;
+        }
+        else if (word.length < highestPointsWord.length && highestPointsWord.length != 10) {
+          highestPointsWord = word;
+        }
+      }
+    });
+
+    const winningWord = {
+      word: highestPointsWord,
+      score: score
+    };
+
+    return winningWord;
+  }
+
 };
 
 // Do not remove this line or your tests will break!
